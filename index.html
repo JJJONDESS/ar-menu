@@ -1,50 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D World AR Menu</title>
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
-    <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #111; }
-        model-viewer { width: 100%; height: 100%; }
-        #ar-button {
-            background-color: #ff5722; border-radius: 30px; border: none;
-            color: white; padding: 14px 28px; font-family: sans-serif; font-weight: bold;
-            font-size: 16px; position: absolute; bottom: 50px; left: 50%;
-            transform: translateX(-50%); cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 999;
-        }
-    </style>
-</head>
-<body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Universal WebAR Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- Include A-Frame and the official AR.js Libraries -->
+    <script src="https://aframe.io"></script>
+    <script src="https://githack.com"></script>
+  </head>
+  <body style="margin: 0px; overflow: hidden;">
+    
+    <!-- Initialize the AR.js webcam scene without showing debug borders -->
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      
+      <!-- Load your 3D burger model file into the webpage assets -->
+      <a-assets>
+        <a-asset-item id="burger" src="burger.glb"></a-asset-item>
+      </a-assets>
 
-    <!-- Bypassing internal cross-origin server fetch errors -->
-    <model-viewer 
-        id="burger-viewer"
-        ar 
-        ar-modes="scene-viewer quick-look webxr" 
-        ar-scale="fixed"
-        camera-controls 
-        touch-action="none"
-        shadow-intensity="1"
-        exposure="1"
-        alt="Interactive 3D Burger">
+      <!-- Track the default universal 'Hiro' marker card -->
+      <a-marker preset="hiro">
+        <!-- Display your 3D burger directly on top of the marker. 
+             You can adjust scale, position, and rotation values here if needed -->
         
-        <button slot="ar-button" id="ar-button">
-            👋 PLACE BURGER ON TABLE
-        </button>
         
-    </model-viewer>
+      </a-marker>
 
-    <script>
-        // Dynamically compute absolute path relative to root directory to fix server reading bugs
-        const viewer = document.getElementById('burger-viewer');
-        const relativePath = 'burger.glb';
-        
-        // Resolve absolute origin
-        const absoluteUrl = new URL(relativePath, window.location.href).href;
-        viewer.setAttribute('src', absoluteUrl);
-    </script>
-
-</body>
+      <!-- Activate the phone's web camera layer -->
+      
+      
+    </a-scene>
+  </body>
 </html>
