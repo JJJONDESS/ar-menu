@@ -4,21 +4,21 @@
     <meta charset="utf-8">
     <title>Universal WebAR Menu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <!-- Stable release engine updates to bypass white screen bugs -->
+    <!-- Swapped to official secure CDN networks to completely bypass the mobile browser white screen block -->
     <script src="https://aframe.io"></script>
-    <script src="https://githack.com"></script>
+    <script src="https://jsdelivr.net"></script>
   </head>
   <body style="margin: 0px; overflow: hidden;">
     
-    <!-- Added explicit video system parameters to force mobile browsers to trigger the camera permissions popup -->
+    <!-- Initializing camera textures explicitly to trigger immediate browser prompt loops -->
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; videoTexture: true;">
       
       <a-assets>
         <a-asset-item id="burger" src="burger.glb"></a-asset-item>
       </a-assets>
 
+      <!-- Anchoring tracking systems to the Hiro table card -->
       <a-marker preset="hiro">
-        <!-- Kept original rendering settings, raised position slightly above tracking pad surface -->
         
         
       </a-marker>
