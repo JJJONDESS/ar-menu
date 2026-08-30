@@ -4,38 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Burger Menu</title>
-    <!-- Importing the cloud-optimized engine file directly -->
-    <script type="module" src="https://unpkg.com"></script>
+    <!-- Importing a stable, high-speed engine provider link -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #1a1a1a; font-family: sans-serif; }
-        /* Scales the responsive container grid to occupy 100% viewport space */
         .menu-container { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
         model-viewer { width: 100%; height: 80vh; }
-        .footer-banner { width: 100%; height: 20vh; background: #222; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 -4px 20px rgba(0,0,0,0.5); }
+        .footer-banner { width: 100%; height: 20vh; background: #222; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 -4px 20px rgba(0,0,0,0.5); z-index: 100; }
         .food-title { color: #fff; font-size: 24px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 1px; }
         .food-desc { color: #aaa; font-size: 14px; margin: 0; text-align: center; max-width: 80%; }
+        /* Style a clear AR launch button directly over the 3D model */
+        #ar-button {
+            background-color: #ff5722; border-radius: 30px; border: none;
+            color: white; padding: 12px 24px; font-weight: bold; font-size: 14px;
+            position: absolute; bottom: 22vh; left: 50%; transform: translateX(-50%);
+            cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.4); z-index: 999;
+        }
     </style>
 </head>
 <body>
 
     <div class="menu-container">
-        <!-- Self-contained 3D viewing container box layout -->
+        
+        <!-- Connected the file directly using src, added 'ar' parameters for camera support -->
         <model-viewer 
             src="burger.glb" 
+            ar 
+            ar-modes="quick-look webxr scene-viewer"
+            ar-scale="fixed"
             camera-controls 
             auto-rotate 
-            auto-rotate-delay="1000"
-            rotation-per-second="30deg"
             touch-action="pan-y"
             shadow-intensity="1.5"
             exposure="1.2"
             alt="3D Interactive Food Item">
+            
+            <!-- This button will launch the AR camera mode -->
+            <button slot="ar-button" id="ar-button">
+                📸 VIEW 3D BURGER IN YOUR ROOM
+            </button>
+            
         </model-viewer>
 
-        
         <div class="footer-banner">
             <h1 class="food-title">🍔 Signature Burger</h1>
-            <p class="food-desc">Touch and drag the item above to inspect our fresh ingredients in full 3D rotation!</p>
+            <p class="food-desc">Touch and drag to spin the item, or tap the orange button to view it on your table!</p>
         </div>
     </div>
 
