@@ -4,25 +4,30 @@
     <meta charset="utf-8">
     <title>Universal WebAR Menu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <!-- Swapped to official secure CDN networks to completely bypass the mobile browser white screen block -->
+    
+    <!-- Downgraded to the 1.0.4 legacy stable engine to resolve mobile script crashes -->
     <script src="https://aframe.io"></script>
-    <script src="https://jsdelivr.net"></script>
+    
+    <!-- Route through Cloudflare Secure Production CDN to completely bypass mobile network security blocks -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.1.1/aframe-ar.min.js"></script>
   </head>
   <body style="margin: 0px; overflow: hidden;">
     
-    <!-- Initializing camera textures explicitly to trigger immediate browser prompt loops -->
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; videoTexture: true;">
+    <!-- Initialize tracking matrix rules safely -->
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
       
       <a-assets>
+        <!-- The self-contained 3D burger asset -->
         <a-asset-item id="burger" src="burger.glb"></a-asset-item>
       </a-assets>
 
-      <!-- Anchoring tracking systems to the Hiro table card -->
+      <!-- Map the system to identify the physical Hiro table card -->
       <a-marker preset="hiro">
         
         
       </a-marker>
 
+      <!-- Target the system view to run via phone lens variables -->
       
       
     </a-scene>
