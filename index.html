@@ -3,30 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>Universal WebAR Menu</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <!-- Include A-Frame and the official AR.js Libraries -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <!-- Stable release engine updates to bypass white screen bugs -->
     <script src="https://aframe.io"></script>
     <script src="https://githack.com"></script>
   </head>
   <body style="margin: 0px; overflow: hidden;">
     
-    <!-- Initialize the AR.js webcam scene without showing debug borders -->
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+    <!-- Added explicit video system parameters to force mobile browsers to trigger the camera permissions popup -->
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; videoTexture: true;">
       
-      <!-- Load your 3D burger model file into the webpage assets -->
       <a-assets>
         <a-asset-item id="burger" src="burger.glb"></a-asset-item>
       </a-assets>
 
-      <!-- Track the default universal 'Hiro' marker card -->
       <a-marker preset="hiro">
-        <!-- Display your 3D burger directly on top of the marker. 
-             You can adjust scale, position, and rotation values here if needed -->
+        <!-- Kept original rendering settings, raised position slightly above tracking pad surface -->
         
         
       </a-marker>
 
-      <!-- Activate the phone's web camera layer -->
       
       
     </a-scene>
