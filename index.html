@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Burger Menu</title>
-    <!-- Stable cloud delivery link -->
     <script type="module" src="https://googleapis.com"></script>
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #1a1a1a; font-family: sans-serif; }
@@ -19,9 +18,9 @@
 
     <div class="menu-container">
         
-        <!-- Swapped out the src text configuration to pull perfectly relative data tracks -->
+        <!-- Pulls the model directly from the current base folder path -->
         <model-viewer 
-            id="burger-model"
+            src="burger.glb" 
             camera-controls 
             auto-rotate 
             touch-action="pan-y"
@@ -35,13 +34,6 @@
             <p class="food-desc">Touch and drag the item above to inspect our fresh ingredients in full 3D rotation!</p>
         </div>
     </div>
-
-    <script>
-        // Forces the browser to load the exact, true path of your burger asset on GitHub servers
-        const viewer = document.getElementById('burger-model');
-        const absoluteUrl = window.location.origin + window.location.pathname + 'burger.glb';
-        viewer.setAttribute('src', absoluteUrl);
-    </script>
 
 </body>
 </html>
